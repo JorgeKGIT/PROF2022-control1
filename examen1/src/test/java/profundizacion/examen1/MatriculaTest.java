@@ -48,17 +48,16 @@ public class MatriculaTest {
 	}
 	@Test
 	public void Test_Recorrer_Todas_Matriculas() throws Exception {
-		Matricula a = mock(Matricula.class);
+		
 		Vector<Asignatura> vector = new Vector<Asignatura>();
 		Asignatura a1= mock(Asignatura.class);
 		Asignatura a2= mock(Asignatura.class);
-		vector.add(a2);
+		when(a1.getImporte()).thenReturn((double) 1);
+		when(a2.getImporte()).thenReturn((double) 1);
 		vector.add(a1);
-		a.vectorAsignaturas= vector;
-		when(a.getImporte()).thenReturn((double) (a.vectorAsignaturas.size()));
-		when(a1.getImporte()).thenReturn(1.1);
-		
-		assertEquals(2,a.getImporte());
+		vector.add(a2);
+		matricula = new Matricula(vector);
+		assertEquals((double)vector.size(),matricula.getImporte());
 		
 	}
 }
